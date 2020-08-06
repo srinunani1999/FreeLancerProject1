@@ -1,0 +1,94 @@
+﻿@{ 
+    var fields = ViewBag.fields;
+
+}
+
+<section id="content">
+
+    <!-- begin: .tray-center-->
+    <div>
+        <div class="tray tray-center animated animated-short fadeInUp">
+            <div>
+                <table id="table"
+                       data-show-export="true" data-url="http://localhost:49440/api/employees/emp"
+                       data-export-data-type="all">
+                    <thead>
+                        <tr class="bg-light">
+                            @foreach (var item in fields)
+                            {
+                                <th data-field=@item>@item</th>
+
+                            }
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+
+
+
+
+        function refreshGrid() {
+
+
+
+
+
+
+            $('#table').bootstrapTable({
+                method: 'GET',
+
+                url:'http://localhost:49440/api/employees/emp',
+
+                uniqueId: 'Id',
+                sortName: 'Id',
+                sortOrder: 'asc',
+                toolbar: "#toolbar",
+
+                cache: false,
+
+                pagination: true,
+                pageSize: 5,
+                sort: [true],
+               
+            
+                search: true,
+                showColumns: true,
+                showRefresh: true,
+
+                exportTypes: ['csv', 'txt', 'excel'],
+                minimumCountColumns: 2,
+                clickToSelect: true,
+
+            });
+          
+        }
+
+
+        $(document).ready(function () {
+
+            refreshGrid();
+        });
+    </script>
+}

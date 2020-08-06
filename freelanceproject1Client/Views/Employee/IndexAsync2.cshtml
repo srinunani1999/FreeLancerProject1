@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "IndexAsync2";
+}
+
+<h1>IndexAsync2</h1>
+
+@{
+    var emp = ViewBag.employees;
+    var fieldnames = ViewBag.fields;
+}
+<table class="table">
+    <thead>
+        @foreach (string item in fieldnames)
+        {
+
+
+        <th>
+            @item
+
+
+        </th>
+    }
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+

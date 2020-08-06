@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    var emp = ViewBag.employees;
+    var fieldnames = ViewBag.fields;
+    var url = ViewBag.json;
+}
+<h1>Details</h1>
+<table id="table" class="table"
+       data-toggle="table"
+       data-url=@url>
+
+
+    <thead>
+        <tr>
+            <th data-field="Id">Id</th>
+
+        </tr>
+    </thead>
+</table>
